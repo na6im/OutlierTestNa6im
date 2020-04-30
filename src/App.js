@@ -6,7 +6,8 @@ import {
   Body,
   Score,
   ScoreStat,
-  ScoreBar
+  ScoreBar,
+  Bar
 } from './styles'
 import Questions from './questions.json'
 import QuestionComponent from './components/QuestionComponent'
@@ -18,13 +19,16 @@ function App () {
   const [score, setScore] = useState(0)
 
   function onAnswer (correct) {
-    if (correct) setScore(score + 1)
+    if (correct) {
+      setScore(score + 1)
+    }
     setTotalAnswerd(totalAnswerd + 1)
   }
   function onNextQuestion () {
     setIndex(index + 1)
   }
-  console.log(Questions.length - index)
+  let remainingQuestions = Questions.length - totalAnswerd
+  console.log(remainingQuestions)
   return (
     <Container>
       <QuestionLayout>
@@ -41,15 +45,29 @@ function App () {
           />
           <Score>
             <ScoreStat>
-              <div>Score {(score / Questions.length) * 100}%</div>
+              <div>Score {(score / totalAnswerd) * 100}%</div>
               <div>
                 Max score{' '}
-                {((score + (Questions.length - index)) / Questions.length) *
+                {((score + (Questions.length - totalAnswerd)) /
+                  Questions.length) *
                   100}
                 %
               </div>
             </ScoreStat>
-            <ScoreBar />
+            <ScoreBar>
+              <Bar
+                ratio={score / Questions.length}
+                style={{ zIndex: 4, backgroundColor: 'black' }}
+              />
+              <Bar
+                ratio={score / totalAnswerd}
+                style={{ zIndex: 3, backgroundColor: '#717171' }}
+              />
+              <Bar
+                ratio={(score + remainingQuestions) / Questions.length}
+                style={{ zIndex: 2, backgroundColor: '#D2D2D2' }}
+              />
+            </ScoreBar>
           </Score>
         </Body>
       </QuestionLayout>

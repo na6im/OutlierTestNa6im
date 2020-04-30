@@ -76,7 +76,7 @@ export const AnswerButton = styled.div`
 export const Score = styled.div`
   display: flex;
   flex-direction: column;
-  height: 4em;
+  height: 3em;
   width: 100%;
   border-radius: 5px;
   margin-top: auto;
@@ -87,7 +87,16 @@ export const ScoreStat = styled.div`
   justify-content: space-between;
 `
 export const ScoreBar = styled.div`
+  position: relative;
   height: 100%;
   border-radius: 5px;
   border: solid 1px black;
+`
+
+export const Bar = styled.div`
+  height: 100%;
+  position: absolute;
+  left: 0;
+  width: ${props => props.ratio * 100}%;
+  background-color: black;
 `
