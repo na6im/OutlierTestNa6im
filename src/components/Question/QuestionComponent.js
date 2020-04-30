@@ -6,8 +6,8 @@ import {
   AnswerButton,
   Result
 } from './styles'
-import fullStar from '../blackStar.png'
-import star from '../greyStar.png'
+import fullStar from '../../blackStar.png'
+import star from '../../greyStar.png'
 
 function QuestionComponent ({
   question,
