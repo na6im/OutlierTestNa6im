@@ -7,7 +7,8 @@ import {
   AnswerButton,
   Result
 } from './styles'
-import star from '../blackStar.png'
+import fullStar from '../blackStar.png'
+import star from '../greyStar.png'
 
 function QuestionComponent ({
   question,
@@ -17,6 +18,11 @@ function QuestionComponent ({
   const [answers, setAnswers] = useState([])
   const [answered, setAnswered] = useState()
 
+  const difficulty = {
+    easy: 1,
+    medium: 2,
+    hard: 3
+  }
   useEffect(() => {
     const answerOptions = question.incorrect_answers
     answerOptions.splice(
@@ -31,6 +37,7 @@ function QuestionComponent ({
     //TODO stars
   }
 
+  console.log(difficulty[question.difficulty])
   function getAnswerColor (answer) {
     if (answer === question.correct_answer) return 'black'
     if (answer === answered) return 'white'
@@ -51,18 +58,9 @@ function QuestionComponent ({
     <React.Fragment>
       <Category>Entertaiment: Board Games</Category>
       <div>
-        <img
-          src={star}
-          style={{ height: '10px', width: '10px', stroke: 'blue' }}
-        />
-        <img
-          src={star}
-          style={{ height: '10px', width: '10px', stroke: 'blue' }}
-        />
-        <img
-          src={star}
-          style={{ height: '10px', width: '10px', stroke: 'blue' }}
-        />
+        {[...Array(3)].map((x, id) => (
+          <img src={id < difficulty[question.difficulty] ? fullStar : star} />
+        ))}
       </div>
       <Question>
         <QuestionCore style={{ gridArea: 'question' }}>
@@ -70,6 +68,7 @@ function QuestionComponent ({
         </QuestionCore>
         {answers.map((answer, id) => (
           <AnswerButton
+            key={id}
             id={id}
             disabled={
               !!answered &&

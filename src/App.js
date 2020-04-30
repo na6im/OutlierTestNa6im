@@ -28,7 +28,9 @@ function App () {
       <QuestionLayout>
         <ProgressBar ratio={0.5} />
         <Body>
-          <Title>Question {index} of 20</Title>
+          <Title>
+            Question {index + 1} of {Questions.length}
+          </Title>
           <QuestionComponent
             index={index}
             question={Questions[index]}
