@@ -53,7 +53,7 @@ function QuestionComponent ({
 
   return (
     <React.Fragment>
-      <Category>Entertaiment: Board Games</Category>
+      <Category>{decodeURIComponent(question.category)}</Category>
       <div>
         {[...Array(3)].map((x, id) => (
           <img
