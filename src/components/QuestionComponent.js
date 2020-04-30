@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { Title, Category, Question, QuestionCore, AnswerButton } from './styles'
+import {
+  Title,
+  Category,
+  Question,
+  QuestionCore,
+  AnswerButton,
+  Result
+} from './styles'
 import star from '../blackStar.png'
 
-function QuestionComponent ({ question }) {
+function QuestionComponent ({
+  question,
+  nextQuestionHandler,
+  onAnswerHandler
+}) {
   const [answers, setAnswers] = useState([])
   const [answered, setAnswered] = useState()
 
@@ -22,6 +33,17 @@ function QuestionComponent ({ question }) {
   function getAnswerColor (answer) {
     if (answer === question.correct_answer) return 'black'
     if (answer === answered) return 'white'
+  }
+
+  function renderResult () {
+    return answered === question.correct_answer ? 'Correct' : 'Sorry!'
+  }
+
+  function onClickHandler (answer) {
+    if (!answered) {
+      setAnswered(answer)
+      onAnswerHandler(answer === question.correct_answer)
+    }
   }
 
   return (
@@ -54,13 +76,30 @@ function QuestionComponent ({ question }) {
               answer !== question.correct_answer &&
               answer !== answered
             }
-            onClick={() => setAnswered(answer)}
+            onClick={() => {
+              onClickHandler(answer)
+            }}
             answerColor={!!answered && getAnswerColor(answer)}
           >
             {decodeURIComponent(answer)}
           </AnswerButton>
         ))}
       </Question>
+      {!!answered && (
+        <Result>
+          {renderResult()}
+          <AnswerButton
+            style={{
+              width: 'fit-content',
+              padding: '5px 1em',
+              marginTop: '2em'
+            }}
+            onClick={() => nextQuestionHandler()}
+          >
+            Next question
+          </AnswerButton>
+        </Result>
+      )}
     </React.Fragment>
   )
 }

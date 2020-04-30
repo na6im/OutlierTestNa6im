@@ -39,7 +39,7 @@ export const AnswerButton = styled.button`
   height: fit-content;
   padding: 5px;
   text-align: center;
-
+  outline: none;
   ${props =>
     props.answerColor === 'white' &&
     css`
@@ -53,4 +53,14 @@ export const AnswerButton = styled.button`
       background-color: black;
       color: white;
     `}
+`
+export const Result = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  align-items: center;
 `

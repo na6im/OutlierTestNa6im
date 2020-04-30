@@ -13,16 +13,28 @@ import QuestionComponent from './components/QuestionComponent'
 
 function App () {
   const [index, setIndex] = useState(0)
+  const [score, setScore] = useState(0)
+
+  function onAnswer (correct) {
+    if (correct) setScore(score + 1)
+  }
+  function onNextQuestion () {
+    setIndex(index + 1)
+  }
 
   return (
     <Container>
       <QuestionLayout>
         <ProgressBar ratio={0.5} />
         <Body>
-          <QuestionComponent question={Questions[index]} />
+          <QuestionComponent
+            question={Questions[index]}
+            onAnswerHandler={onAnswer}
+            nextQuestionHandler={onNextQuestion}
+          />
           <Score>
             <ScoreStat>
-              <div>Score 60%</div>
+              <div>Score {score}%</div>
               <div>Max score 75%</div>
             </ScoreStat>
             <ScoreBar />
