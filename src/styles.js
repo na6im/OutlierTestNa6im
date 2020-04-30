@@ -16,6 +16,9 @@ export const QuestionLayout = styled.div`
   width: 40%;
   background-color: white;
   border: 8px solid #ededed;
+  @media (max-width: 1000px) {
+    width: 75%;
+  }
 `
 
 export const ProgressBar = styled.div`
