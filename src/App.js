@@ -7,11 +7,11 @@ import {
   Score,
   ScoreStat,
   ScoreBar,
-  Bar
+  Bar,
+  Title
 } from './styles'
 import Questions from './questions.json'
 import QuestionComponent from './components/QuestionComponent'
-import { Title } from './components/styles'
 
 function App () {
   const [index, setIndex] = useState(0)
@@ -28,7 +28,6 @@ function App () {
     setIndex(index + 1)
   }
   let remainingQuestions = Questions.length - totalAnswerd
-  console.log(remainingQuestions)
   return (
     <Container>
       <QuestionLayout>
@@ -45,12 +44,20 @@ function App () {
           />
           <Score>
             <ScoreStat>
-              <div>Score {(score / totalAnswerd) * 100}%</div>
+              <div>
+                Score{' '}
+                {totalAnswerd === 0
+                  ? 0
+                  : Math.floor((score / totalAnswerd) * 100)}
+                %
+              </div>
               <div>
                 Max score{' '}
-                {((score + (Questions.length - totalAnswerd)) /
-                  Questions.length) *
-                  100}
+                {Math.floor(
+                  ((score + (Questions.length - totalAnswerd)) /
+                    Questions.length) *
+                    100
+                )}
                 %
               </div>
             </ScoreStat>

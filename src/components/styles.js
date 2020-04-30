@@ -1,11 +1,5 @@
 import styled, { css } from 'styled-components'
 
-export const Title = styled.div`
-  font-size: 32px;
-  font-weight: bolder;
-  color: #4a4a52;
-`
-
 export const Category = styled.div`
   font-size: 14px;
   color: #b1acb2;

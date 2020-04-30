@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Title,
   Category,
   Question,
   QuestionCore,
@@ -23,6 +22,7 @@ function QuestionComponent ({
     medium: 2,
     hard: 3
   }
+
   useEffect(() => {
     const answerOptions = question.incorrect_answers
     answerOptions.splice(
@@ -55,7 +55,10 @@ function QuestionComponent ({
       <Category>Entertaiment: Board Games</Category>
       <div>
         {[...Array(3)].map((x, id) => (
-          <img src={id < difficulty[question.difficulty] ? fullStar : star} />
+          <img
+            key={id}
+            src={id < difficulty[question.difficulty] ? fullStar : star}
+          />
         ))}
       </div>
       <Question>
