@@ -14,19 +14,21 @@ import { Title } from './components/styles'
 
 function App () {
   const [index, setIndex] = useState(0)
+  const [totalAnswerd, setTotalAnswerd] = useState(0)
   const [score, setScore] = useState(0)
 
   function onAnswer (correct) {
     if (correct) setScore(score + 1)
+    setTotalAnswerd(totalAnswerd + 1)
   }
   function onNextQuestion () {
     setIndex(index + 1)
   }
-
+  console.log(Questions.length - index)
   return (
     <Container>
       <QuestionLayout>
-        <ProgressBar ratio={0.5} />
+        <ProgressBar ratio={(index + 1) / Questions.length} />
         <Body>
           <Title>
             Question {index + 1} of {Questions.length}
@@ -39,8 +41,13 @@ function App () {
           />
           <Score>
             <ScoreStat>
-              <div>Score {score}%</div>
-              <div>Max score 75%</div>
+              <div>Score {(score / Questions.length) * 100}%</div>
+              <div>
+                Max score{' '}
+                {((score + (Questions.length - index)) / Questions.length) *
+                  100}
+                %
+              </div>
             </ScoreStat>
             <ScoreBar />
           </Score>

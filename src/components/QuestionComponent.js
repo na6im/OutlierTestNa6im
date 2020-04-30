@@ -33,11 +33,7 @@ function QuestionComponent ({
     setAnswers(answerOptions)
     setAnswered()
   }, [question])
-  {
-    //TODO stars
-  }
 
-  console.log(difficulty[question.difficulty])
   function getAnswerColor (answer) {
     if (answer === question.correct_answer) return 'black'
     if (answer === answered) return 'white'
