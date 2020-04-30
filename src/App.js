@@ -18,6 +18,8 @@ function App () {
   const [totalAnswerd, setTotalAnswerd] = useState(0)
   const [score, setScore] = useState(0)
 
+  const total = Questions.length
+
   function onAnswer (correct) {
     if (correct) {
       setScore(score + 1)
@@ -25,18 +27,18 @@ function App () {
     setTotalAnswerd(totalAnswerd + 1)
   }
   function onNextQuestion () {
-    setIndex(index + 1)
+    if (index !== total - 1) setIndex(index + 1)
   }
-  let remainingQuestions = Questions.length - totalAnswerd
   return (
     <Container>
       <QuestionLayout>
-        <ProgressBar ratio={(index + 1) / Questions.length} />
+        <ProgressBar ratio={(index + 1) / total} />
         <Body>
           <Title>
-            Question {index + 1} of {Questions.length}
+            Question {index + 1} of {total}
           </Title>
           <QuestionComponent
+            end={index === total - 1}
             index={index}
             question={Questions[index]}
             onAnswerHandler={onAnswer}
@@ -53,17 +55,12 @@ function App () {
               </div>
               <div>
                 Max score{' '}
-                {Math.floor(
-                  ((score + (Questions.length - totalAnswerd)) /
-                    Questions.length) *
-                    100
-                )}
-                %
+                {Math.floor(((score + (total - totalAnswerd)) / total) * 100)}%
               </div>
             </ScoreStat>
             <ScoreBar>
               <Bar
-                ratio={score / Questions.length}
+                ratio={score / total}
                 style={{ zIndex: 4, backgroundColor: 'black' }}
               />
               <Bar
@@ -71,7 +68,7 @@ function App () {
                 style={{ zIndex: 3, backgroundColor: '#717171' }}
               />
               <Bar
-                ratio={(score + remainingQuestions) / Questions.length}
+                ratio={(score + (total - totalAnswerd)) / total}
                 style={{ zIndex: 2, backgroundColor: '#D2D2D2' }}
               />
             </ScoreBar>

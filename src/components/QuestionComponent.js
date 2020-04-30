@@ -12,7 +12,8 @@ import star from '../greyStar.png'
 function QuestionComponent ({
   question,
   nextQuestionHandler,
-  onAnswerHandler
+  onAnswerHandler,
+  end
 }) {
   const [answers, setAnswers] = useState([])
   const [answered, setAnswered] = useState()
@@ -56,6 +57,7 @@ function QuestionComponent ({
       <div>
         {[...Array(3)].map((x, id) => (
           <img
+            alt={'star'}
             key={id}
             src={id < difficulty[question.difficulty] ? fullStar : star}
           />
@@ -85,7 +87,7 @@ function QuestionComponent ({
       </Question>
       {!!answered && (
         <Result>
-          {renderResult()}
+          {!end ? renderResult() : 'its the end'}
           <AnswerButton
             style={{
               width: 'fit-content',
@@ -94,7 +96,7 @@ function QuestionComponent ({
             }}
             onClick={() => nextQuestionHandler()}
           >
-            Next question
+            {!end ? 'Next question' : 'Play again'}
           </AnswerButton>
         </Result>
       )}

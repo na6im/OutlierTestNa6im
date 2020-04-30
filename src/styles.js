@@ -49,11 +49,13 @@ export const Score = styled.div`
 export const ScoreStat = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 `
 export const ScoreBar = styled.div`
   position: relative;
   height: 100%;
   border-radius: 5px;
+  overflow: hidden;
   border: solid 1px black;
 `
 

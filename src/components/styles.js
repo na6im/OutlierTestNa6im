@@ -9,7 +9,7 @@ export const Question = styled.div`
   display: grid;
   margin-top: 3em;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 1fr auto auto;
   grid-template-areas:
     'question question'
     '1 2'
@@ -19,7 +19,7 @@ export const Question = styled.div`
 `
 
 export const QuestionCore = styled.div`
-  grid-area: 'question';
+  height: 5em;
   font-weight: 700;
   font-size: 18px;
 `
@@ -30,7 +30,7 @@ export const AnswerButton = styled.button`
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
-  height: fit-content;
+  max-height: 4em;
   padding: 5px;
   text-align: center;
   outline: none;
