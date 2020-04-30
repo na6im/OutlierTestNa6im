@@ -25,7 +25,7 @@ function QuestionComponent ({
   }
 
   useEffect(() => {
-    const answerOptions = question.incorrect_answers
+    let answerOptions = question.incorrect_answers
     answerOptions.splice(
       Math.floor(Math.random() * Math.floor(3)),
       0,

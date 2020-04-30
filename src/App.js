@@ -1,15 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Container,
-  QuestionLayout,
-  ProgressBar,
-  Body,
-  Score,
-  ScoreStat,
-  ScoreBar,
-  Bar,
-  Title
-} from './styles'
+import { Container, QuestionLayout, ProgressBar, Body, Title } from './styles'
 import Questions from './questions.json'
 import QuestionComponent from './components/Question/QuestionComponent'
 import ScoreComponent from './components/Score/ScoreComponent'

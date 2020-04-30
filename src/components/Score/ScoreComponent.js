@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Bar, Score, ScoreBar, ScoreStat } from './styles'
 
 function ScoreComponent ({ score, totalAnswerd, total }) {
