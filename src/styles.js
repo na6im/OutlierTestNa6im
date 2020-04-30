@@ -49,8 +49,8 @@ export const Question = styled.div`
   grid-template-rows: repeat(3, 1fr);
   grid-template-areas:
     'question question'
-    'answera answerb'
-    'answerc answerd';
+    '1 2'
+    '3 4';
   grid-column-gap: 2em;
   grid-row-gap: 2em;
 `

@@ -1,37 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Container,
   QuestionLayout,
   ProgressBar,
   Body,
-  Title,
-  Category,
-  Question,
-  QuestionCore,
-  AnswerButton,
   Score,
   ScoreStat,
   ScoreBar
 } from './styles'
+import Questions from './questions.json'
+import QuestionComponent from './components/QuestionComponent'
 
 function App () {
+  const [index, setIndex] = useState(0)
   return (
     <Container>
       <QuestionLayout>
         <ProgressBar ratio={0.5} />
         <Body>
-          <Title>Question 16 of 20</Title>
-          <Category>Entertaiment: Board Games</Category>
-          <Question>
-            <QuestionCore style={{ gridArea: 'question' }}>
-              Question testQuestion testQuestion testQuestion testQuestion
-              testQuestion testQuestion testQuestion test
-            </QuestionCore>
-            <AnswerButton style={{ gridArea: 'answera' }}>
-              Question test
-            </AnswerButton>
-          </Question>
-
+          <QuestionComponent question={Questions[0]} />
           <Score>
             <ScoreStat>
               <div>Score 60%</div>
