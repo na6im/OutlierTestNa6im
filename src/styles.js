@@ -10,10 +10,15 @@ export const Container = styled.div`
 `
 
 export const Question = styled.div`
-  display: flex;
   height: 90%;
   width: 40%;
   background-color: white;
   border: 8px solid #ededed;
-  padding: 0 5em;
+`
+
+export const ProgressBar = styled.div`
+  align-self: flex-start;
+  height: 0.8em;
+  width: ${props => props.ratio * 100}%;
+  background-color: #a9aaa9;
 `

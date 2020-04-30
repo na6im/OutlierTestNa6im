@@ -1,10 +1,12 @@
 import React from 'react'
-import { Container, Question } from './styles'
+import { Container, Question, ProgressBar } from './styles'
 
 function App () {
   return (
     <Container>
-      <Question>test</Question>
+      <Question>
+        <ProgressBar ratio={0.5} />
+      </Question>
     </Container>
   )
 }
