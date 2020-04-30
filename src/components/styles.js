@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Title = styled.div`
   font-size: 32px;
@@ -30,14 +30,27 @@ export const QuestionCore = styled.div`
   font-size: 18px;
 `
 
-export const AnswerButton = styled.div`
+export const AnswerButton = styled.button`
   grid-area: 'question';
   background-color: #e5e6e5;
   border-radius: 5px;
   font-weight: 500;
   font-size: 16px;
   height: fit-content;
-  border: 1px solid black;
   padding: 5px;
   text-align: center;
+
+  ${props =>
+    props.answerColor === 'white' &&
+    css`
+      background-color: white;
+      color: black;
+    `}
+
+  ${props =>
+    props.answerColor === 'black' &&
+    css`
+      background-color: black;
+      color: white;
+    `}
 `

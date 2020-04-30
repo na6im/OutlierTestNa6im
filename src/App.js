@@ -13,12 +13,13 @@ import QuestionComponent from './components/QuestionComponent'
 
 function App () {
   const [index, setIndex] = useState(0)
+
   return (
     <Container>
       <QuestionLayout>
         <ProgressBar ratio={0.5} />
         <Body>
-          <QuestionComponent question={Questions[0]} />
+          <QuestionComponent question={Questions[index]} />
           <Score>
             <ScoreStat>
               <div>Score 60%</div>
