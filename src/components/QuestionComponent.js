@@ -25,7 +25,8 @@ function QuestionComponent ({
       question.correct_answer
     )
     setAnswers(answerOptions)
-  }, [])
+    setAnswered()
+  }, [question])
   {
     //TODO stars
   }
@@ -48,7 +49,6 @@ function QuestionComponent ({
 
   return (
     <React.Fragment>
-      <Title>Question 16 of 20</Title>
       <Category>Entertaiment: Board Games</Category>
       <div>
         <img

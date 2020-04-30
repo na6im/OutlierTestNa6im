@@ -10,6 +10,7 @@ import {
 } from './styles'
 import Questions from './questions.json'
 import QuestionComponent from './components/QuestionComponent'
+import { Title } from './components/styles'
 
 function App () {
   const [index, setIndex] = useState(0)
@@ -27,7 +28,9 @@ function App () {
       <QuestionLayout>
         <ProgressBar ratio={0.5} />
         <Body>
+          <Title>Question {index} of 20</Title>
           <QuestionComponent
+            index={index}
             question={Questions[index]}
             onAnswerHandler={onAnswer}
             nextQuestionHandler={onNextQuestion}
