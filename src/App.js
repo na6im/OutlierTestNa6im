@@ -1,10 +1,11 @@
 import React from 'react'
+import { Container, Question } from './styles'
 
 function App () {
   return (
-    <div>
-
-    </div>
+    <Container>
+      <Question>test</Question>
+    </Container>
   )
 }
 
