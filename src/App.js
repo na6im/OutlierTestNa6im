@@ -17,8 +17,15 @@ function App () {
     }
     setTotalAnswerd(totalAnswerd + 1)
   }
+
   function onNextQuestion () {
     if (index !== total - 1) setIndex(index + 1)
+  }
+
+  function onReset () {
+    setIndex(0)
+    setTotalAnswerd(0)
+    setScore(0)
   }
 
   return (
@@ -35,6 +42,7 @@ function App () {
             question={Questions[index]}
             onAnswerHandler={onAnswer}
             nextQuestionHandler={onNextQuestion}
+            onReset={onReset}
           />
           <ScoreComponent
             score={score}

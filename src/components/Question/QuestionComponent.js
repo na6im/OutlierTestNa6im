@@ -13,7 +13,8 @@ function QuestionComponent ({
   question,
   nextQuestionHandler,
   onAnswerHandler,
-  end
+  end,
+  onReset
 }) {
   const [answers, setAnswers] = useState([])
   const [answered, setAnswered] = useState()
@@ -49,6 +50,14 @@ function QuestionComponent ({
     if (!answered) {
       setAnswered(answer)
       onAnswerHandler(answer === question.correct_answer)
+    }
+  }
+
+  function onAnswerButtonkHandler () {
+    if (!end) {
+      nextQuestionHandler()
+    } else {
+      onReset()
     }
   }
   return (
@@ -94,7 +103,7 @@ function QuestionComponent ({
               padding: '5px 1em',
               marginTop: '2em'
             }}
-            onClick={() => nextQuestionHandler()}
+            onClick={onAnswerButtonkHandler}
           >
             {!end ? 'Next question' : 'Play again'}
           </AnswerButton>
