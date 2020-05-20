@@ -31,7 +31,7 @@ function App () {
   return (
     <Container>
       <QuestionLayout>
-        <ProgressBar ratio={(index + 1) / total} />
+        <ProgressBar ratio={(index + 1) / total} data-testid={'Progress'} />
         <Body>
           <Title>
             Question {index + 1} of {total}
