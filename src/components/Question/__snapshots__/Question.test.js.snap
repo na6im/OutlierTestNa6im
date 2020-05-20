@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Question /> Should render and match the snapshot 1`] = `
+<div
+  class="sc-AxjAm dwNmLq"
+>
+  Entertainment: Video Games
+</div>
+`;
