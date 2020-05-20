@@ -20,6 +20,7 @@ function App () {
   function onNextQuestion () {
     if (index !== total - 1) setIndex(index + 1)
   }
+
   return (
     <Container>
       <QuestionLayout>

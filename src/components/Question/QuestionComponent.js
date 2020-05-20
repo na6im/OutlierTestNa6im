@@ -25,9 +25,10 @@ function QuestionComponent ({
   }
 
   useEffect(() => {
-    let answerOptions = question.incorrect_answers
+    let answerOptions = JSON.parse(JSON.stringify(question.incorrect_answers))
+
     answerOptions.splice(
-      Math.floor(Math.random() * Math.floor(3)),
+      Math.floor(Math.random() * Math.floor(4)),
       0,
       question.correct_answer
     )
@@ -50,7 +51,6 @@ function QuestionComponent ({
       onAnswerHandler(answer === question.correct_answer)
     }
   }
-
   return (
     <React.Fragment>
       <Category>{decodeURIComponent(question.category)}</Category>
