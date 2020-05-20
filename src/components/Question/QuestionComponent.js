@@ -78,6 +78,7 @@ function QuestionComponent ({
         </QuestionCore>
         {answers.map((answer, id) => (
           <AnswerButton
+            data-testid={'answer'}
             key={id}
             id={id}
             disabled={
